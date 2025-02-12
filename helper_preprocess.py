@@ -11,7 +11,6 @@ def actigraph_add_datetime(actigraph_data):
 
     :param actigraph_data: ActiGraph dataframe
     """
-
     datetime = []
     for i in range(len(actigraph_data['date'])):
         date = pd.to_datetime(actigraph_data['date'][i], format='%m/%d/%Y').date()
@@ -21,17 +20,14 @@ def actigraph_add_datetime(actigraph_data):
     actigraph_data['Datetime'] = datetime
     return(actigraph_data)
 
-
 def watch_add_datetime(watch_df):
     """
     Add the datetime of the watch dataframe to a "Datetime" column.
     :param watch_df: watch dataframe
     """
-
     watch_df['Datetime'] = pd.to_datetime(watch_df['Time'], unit='ms', utc=True).dt.tz_convert(
         'America/Chicago').dt.tz_localize(None)
     return(watch_df)
-
 
 def get_intensity(watch_df, st, window_size):
     """
@@ -40,7 +36,6 @@ def get_intensity(watch_df, st, window_size):
     :param st: the start time, data of the next minute will be used for calculation
     :return: the intensity value of the next minute using the Panasonic equation
     """
-
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = watch_df.loc[(watch_df['Datetime'] >= st) & (watch_df['Datetime'] < et)].reset_index(drop=True)
     sum_x_sq = 0
@@ -67,7 +62,6 @@ def get_intensity(watch_df, st, window_size):
     else:
         return np.nan
     
-
 def get_met_freedson(df_acti, st, window_size):
     """
     Calculate and return the minute level Freedson MET value for the next minute using ActiGraph data.
@@ -76,7 +70,6 @@ def get_met_freedson(df_acti, st, window_size):
     :param st: the start time, data of next minute will be used
     :return: the Freedson MET value
     """
-
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = df_acti.loc[(df_acti['Datetime'] >= st) & (df_acti['Datetime'] < et)].reset_index(drop=True)
     if len(temp['axis1']) > 0:
@@ -87,7 +80,6 @@ def get_met_freedson(df_acti, st, window_size):
     else:
         return np.nan
 
-
 def get_met_vm3(df_acti, st, window_size):
     """
     Calculate and return the minute level VM3 MET value for the next minute using ActiGraph data.
@@ -96,7 +88,6 @@ def get_met_vm3(df_acti, st, window_size):
     :param st: the start time, data of next minute will be used
     :return: the VM3 MET value
     """
-
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = df_acti.loc[(df_acti['Datetime'] >= st) & (df_acti['Datetime'] < et)].reset_index(drop=True)
 
@@ -108,7 +99,6 @@ def get_met_vm3(df_acti, st, window_size):
     met = 0.000863 * vm3 + 0.668876
     return met
 
-
 def get_met_crouter(df_acti, st, window_size = 10):
     """
     Calculate and return the Crouter MET value for each 10-sec epoch from ActiGraph data.
@@ -117,7 +107,6 @@ def get_met_crouter(df_acti, st, window_size = 10):
     :param st: the start time, data of next window (default = 10 sec)
     :return: the Crouter MET value
     """
-
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = df_acti.loc[(df_acti['Datetime'] >= st) & (df_acti['Datetime'] < et)].reset_index(drop=True)
     if len(temp['axis1']) > 0:
@@ -133,18 +122,12 @@ def get_met_crouter(df_acti, st, window_size = 10):
     else:
         return np.nan
 
-
-def get_met_fitbit(cal, weight):
-    return cal * 200 / weight / 3.5
-
-
 def get_met_matcart(df_met, st, window_size):
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = df_met.loc[(df_met['Datetime'] >= st) & (df_met['Datetime'] < et)].reset_index(drop=True)
     met = round(np.mean(list(temp['MET(MetCart)'])),3)
     return met
-    
-    
+        
 def get_metcart(ROOT_PATH_FSM, met_cart_dic, p):
     metcart_file = open(ROOT_PATH_FSM + 'P' + str(p) + '/Metcart/P' + str(p) + ' (raw)', 'r')
     lines = metcart_file.readlines()
@@ -160,7 +143,6 @@ def get_metcart(ROOT_PATH_FSM, met_cart_dic, p):
     df_met = df_met[pd.to_numeric(df_met['MET(MetCart)'], errors='coerce').notnull()]
     return(df_met)
 
-
 def get_train_data(df, st, window_size, input_type='gyro'):
     et = st + pd.DateOffset(minutes=window_size/60)
     temp = df.loc[(df['Datetime'] >= st) & (df['Datetime'] < et)].reset_index(drop=True)
@@ -173,10 +155,8 @@ def get_train_data(df, st, window_size, input_type='gyro'):
         return
     return(this_min_data)
 
-
 def extract_features(data):
     # Added new features: Median, mean, maximum, minimum, range, standard deviation, and root mean square power
-
     outcome = []
     for m in data:
         temp = []
