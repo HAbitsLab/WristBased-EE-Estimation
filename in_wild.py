@@ -21,7 +21,6 @@ from helper_extraction import generate_table
 from helper_model import get_intensity_coef, build_classification_model, pred_activity, set_realistic_met_estimate
 warnings.filterwarnings("ignore")
 
-
 # Define Path
 ROOT_PATH_FSM = 'Y:/PrevMed/Alshurafa_Lab/Lab_Common/CalorieHarmony/'
 ACC_PATH = '/In Wild/Wrist/Clean/Resampled/Accelerometer/'
