@@ -16,7 +16,6 @@ intensity_legend = {'Sedentary': '#a8d0e3', # lightblue
                'Moderate /\n Vigorous': '#DE6454' # red
               }
 
-
 def set_intensity(row, col_name):
     if row[col_name]<1.5:
         return 'Sedentary'
@@ -25,7 +24,6 @@ def set_intensity(row, col_name):
     elif row[col_name]>=3:
         return 'Moderate / Vigorous'
     
-
 def inlab_preprocess(inlab):
     inlab = inlab[['Participant', 'Activity','MET (GoogleFit)','MET (Freedson)','MET (VM3)', 'MET (MetCart)', 'estimation']]
     inlab['Intensity'] = ''
@@ -40,7 +38,6 @@ def inlab_preprocess(inlab):
     inlab['MetCart-GoogleFit'] = inlab.apply(lambda x: x['MET (MetCart)'] - x['MET (GoogleFit)'], axis=1)
     inlab['VM3-Est'] = inlab.apply(lambda x: x['MET (VM3)'] - x['estimation'], axis=1)
     return(inlab)
-
 
 def plot_subplot(ax, xdata, ydata, df, xlabel, ylabel, title, color_dic, color_by):
     i=3
@@ -100,9 +97,7 @@ def plot_subplot(ax, xdata, ydata, df, xlabel, ylabel, title, color_dic, color_b
     ax.legend(handles=patches, labels=[label for _, label in zip(intensity_legend.values(), intensity_legend.keys())], loc='upper left', ncol = 1)
     return
 
-
-def blandAltman_lab(df, filename, color_dic, color_by):
-        
+def blandAltman_lab(df, filename, color_dic, color_by):       
     fig = plt.figure(figsize = (12,10))
 
     ax1 = fig.add_subplot(2, 2, 1)
