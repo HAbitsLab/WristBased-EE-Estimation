@@ -36,7 +36,6 @@ def generate_table(PATH_RESAMPLE_ACC, PATH_RESAMPLE_GYRO, ROOT_PATH_FSM, met_car
     data_training = []
     sedentary_activities = ['Rest', 'Typing on a computer while seated', 'Reading a book or magazine while reclining', 'Lying down while doing nothing']
 
-
     print('Processing: ', str(p))
     weight = participant_weight[str(p)]
 
