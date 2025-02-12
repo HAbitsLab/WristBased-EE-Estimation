@@ -6,8 +6,6 @@ from datetime import datetime, timedelta
 import inspect
 import sys
 
-
-
 def resample(dataDf, timeColHeader, samplingRate, gapTolerance=np.inf, fixedTimeColumn=None):
     """
     Parameters
