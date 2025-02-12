@@ -31,7 +31,6 @@ def get_intensity_coef(df_table_all, gt_type='MetCart'):
     regr.fit(instensity_reshaped, met_reshaped)
     return(regr.coef_[0][0])
 
-
 def build_classification_model(data, target):
     """
     This function use the data and targets provided to build a classification model.
@@ -47,11 +46,9 @@ def build_classification_model(data, target):
     y_pred = model.predict(data)
     return(model)
 
-
 def pred_activity(data, model, table):
     table['model_classification'] = model.predict(data)
     return(table)
-
 
 def set_realistic_met_estimate(table, coef_list):
     """
@@ -59,7 +56,6 @@ def set_realistic_met_estimate(table, coef_list):
     Parameters:
         :param table: the table
     """
-
     intensity_coef = np.mean(coef_list)
     table['scaled_intensity'] = table['Intensity (ACC)'] * intensity_coef
 
