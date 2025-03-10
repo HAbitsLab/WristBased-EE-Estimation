@@ -2,15 +2,15 @@
 Codebase for paper 'Developing and comparing a new BMI inclusive energy expenditure algorithm on wrist worn wearables'.
 
 ### Content
-- [wrist_preprocessing.py][1]:
-- [in-lab.py][2]:
-- [in_wild.py][3]:
-- [Result Visualization.ipynb][4]:
-- [helper_preprocess.py][5]:
-- [helper_extraction.py][6]:
-- [helper_model.py][7]:
-- [helper_visualization.py][8]:
-- [sort_resample_organize.py][9]:
+- [wrist_preprocessing.py][1]: preprocessing raw wrist-based sensor data (e.g., accelerometer, gyroscope) collected from wearable devices.
+- [in-lab.py][2]: processes and analyzes data collected in a controlled lab environment (training and inferencing).
+- [in_wild.py][3]: processes and analyzes data collected in free-living conditions (inferencing only).
+- [Result Visualization.ipynb][4]: Jupyter Notebook for visualizing and analyzing the results of the energy expenditure estimation (demographics, Bland-Altman plots).
+- [helper_preprocess.py][5]: helper script containing utility functions for preprocessing sensor data.
+- [helper_extraction.py][6]: helper script for feature extraction from preprocessed sensor data.
+- [helper_model.py][7]: helper script for training, evaluating, and using predefined machine learning models.
+- [helper_visualization.py][8]: helper script for generating visualizations.
+- [sort_resample_organize.py][9]: helper script for organizing, sorting, and resampling raw sensor data into a structured format.
 
 [1]: https://github.com/HAbitsLab/WristBased-EE-Estimation/blob/main/helper_preprocess.py
 [2]: https://github.com/HAbitsLab/WristBased-EE-Estimation/blob/main/in-lab.py
