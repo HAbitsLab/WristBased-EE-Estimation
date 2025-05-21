@@ -28,6 +28,4 @@ An open-access tool developed to estimate energy expenditure from wrist-worn wea
 
 Link: https://wristmetcalculator.fsm.northwestern.edu/
 
-Sample data is provide in this repo: [/data directory](data)
-
-Data format requirement: 
+Sample data is provide in this repo: [/data](data)
