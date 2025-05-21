@@ -22,3 +22,12 @@ Codebase for paper 'Developing and comparing a new BMI inclusive energy expendit
 [7]: https://github.com/HAbitsLab/WristBased-EE-Estimation/blob/main/helper_model.py]
 [8]: https://github.com/HAbitsLab/WristBased-EE-Estimation/blob/main/helper_visualization.py
 [9]: https://github.com/HAbitsLab/WristBased-EE-Estimation/blob/main/sort_resample_organize.py
+
+# Web API to compare Calorie Estimates between a Smartwatch and Actigraphy
+An open-access tool developed to estimate energy expenditure from wrist-worn wearable sensor data. Using accelerometer and gyroscope signals from commercial smartwatches, this calculator applies a machine learning model to generate minute-by-minute metabolic equivalent of task (MET) estimates. 
+
+Link: https://wristmetcalculator.fsm.northwestern.edu/
+
+Sample data is provide in this repo: [/data directory](data)
+
+Data format requirement: 
